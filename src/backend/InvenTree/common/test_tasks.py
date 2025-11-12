@@ -1,5 +1,6 @@
 """Tests for tasks in app common."""
 
+import unittest
 from django.conf import settings
 from django.test import TestCase
 
@@ -42,6 +43,7 @@ class NewsFeedTests(TestCase):
 
         NewsFeedEntry.objects.all().delete()
 
+    @unittest.skip("internet")
     def test_valid_url(self):
         """Tests that news feed is updated when accessing a valid URL."""
         try:

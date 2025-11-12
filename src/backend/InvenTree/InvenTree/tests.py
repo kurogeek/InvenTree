@@ -2,6 +2,7 @@
 
 import os
 import time
+import unittest
 from datetime import datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
@@ -726,6 +727,7 @@ class TestHelpers(TestCase):
         logo = helpers.getLogoImage(as_file=True)
         self.assertEqual(logo, f'file://{settings.STATIC_ROOT}/img/inventree.png')
 
+    @unittest.skip("internet")
     def test_download_image(self):
         """Test function for downloading image from remote URL."""
         # Run check with a sequence of bad URLs
@@ -1076,6 +1078,7 @@ class TestVersionNumber(TestCase):
         self.assertGreater(v_d, v_c)
         self.assertGreater(v_d, v_a)
 
+    @unittest.skip("internet")
     def test_commit_info(self):
         """Test that the git commit information is extracted successfully."""
         envs = {
@@ -1111,6 +1114,7 @@ class TestVersionNumber(TestCase):
 class CurrencyTests(TestCase):
     """Unit tests for currency / exchange rate functionality."""
 
+    @unittest.skip("internet")
     def test_rates(self):
         """Test exchange rate update."""
         # Initially, there will not be any exchange rate information

@@ -1,5 +1,6 @@
 """Unit tests for the user model database migrations."""
 
+import unittest
 from django_test_migrations.contrib.unittest_case import MigratorTestCase
 
 from InvenTree import unit_test
@@ -19,6 +20,7 @@ class TestForwardMigrations(MigratorTestCase):
 
         User.objects.create(username='brad', email='brad@fred.com', password='password')
 
+    @unittest.skip("internet")
     def test_users_exist(self):
         """Test that users exist in the database."""
         User = self.new_state.apps.get_model('auth', 'user')

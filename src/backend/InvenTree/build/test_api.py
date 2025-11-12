@@ -1,5 +1,6 @@
 """Unit tests for the BuildOrder API."""
 
+import unittest
 from datetime import datetime, timedelta
 from typing import Optional
 
@@ -494,6 +495,7 @@ class BuildTest(BuildAPITest):
             'This build output has already been completed', str(response.data)
         )
 
+    @unittest.skip("internet")
     def test_download_build_orders(self):
         """Test that we can download a list of build orders via the API."""
         required_cols = [

@@ -5,6 +5,7 @@ import shutil
 import subprocess
 import tempfile
 import textwrap
+import unittest
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -262,6 +263,7 @@ class RegistryTests(TestQueryMixin, PluginRegistryMixin, TestCase):
             # Run tests
             self.run_package_test(str(new_dir))
 
+    @unittest.skip("internet")
     @override_settings(PLUGIN_TESTING_SETUP=True)
     def test_package_loading(self):
         """Test that package distributed plugins work."""

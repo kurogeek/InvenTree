@@ -1,6 +1,7 @@
 """Tests for the Part model."""
 
 import os
+import unittest
 
 from django.conf import settings
 from django.core.cache import cache
@@ -61,6 +62,7 @@ class TemplateTagTest(InvenTreeTestCase):
             version.inventreeVersion(),
         )
 
+    @unittest.skip("internet")
     def test_hash(self):
         """Test that the commit hash template tag returns correctly."""
         result_hash = inventree_extras.inventree_commit_hash()
@@ -71,6 +73,7 @@ class TemplateTagTest(InvenTreeTestCase):
         else:
             self.assertGreater(len(result_hash), 5)
 
+    @unittest.skip("internet")
     def test_date(self):
         """Test that the commit date template tag returns correctly."""
         d = inventree_extras.inventree_commit_date()

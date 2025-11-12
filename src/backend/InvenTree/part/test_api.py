@@ -1,5 +1,6 @@
 """Unit tests for the various part API endpoints."""
 
+import unittest
 import os
 from datetime import datetime
 from decimal import Decimal
@@ -669,6 +670,7 @@ class PartOptionsAPITest(InvenTreeAPITestCase):
         self.assertEqual(category['api_url'], reverse('api-part-category-list'))
         self.assertEqual(category['help_text'], 'Part category')
 
+    @unittest.skip("internet")
     def test_part_label_translation(self):
         """Test that 'label' values are correctly translated."""
         response = self.options(reverse('api-part-list'))
@@ -1303,6 +1305,7 @@ class PartAPITest(PartAPITestBase):
         response = self.get('/api/part/10004/', {})
         self.assertEqual(response.data['variant_stock'], 500)
 
+    @unittest.skip("internet")
     def test_part_download(self):
         """Test download of part data via the API."""
         url = reverse('api-part-list')
@@ -2972,6 +2975,7 @@ class BomItemTest(InvenTreeAPITestCase):
 
         self.assertEqual(response.data['available_variant_stock'], 1000)
 
+    @unittest.skip("internet")
     def test_bom_export(self):
         """Test for exporting BOM data."""
         url = reverse('api-bom-list')

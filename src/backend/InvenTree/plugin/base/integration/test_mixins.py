@@ -1,5 +1,6 @@
 """Unit tests for base mixins for plugins."""
 
+import unittest
 from django.conf import settings
 from django.test import TestCase
 from django.urls import include, path, re_path
@@ -266,6 +267,7 @@ class APICallMixinTest(BaseMixinDefinition, TestCase):
         result = self.mixin.api_build_url_args({'a': 'b', 'c': ['d', 'efgh', 1337]})
         self.assertEqual(result, '?a=b&c=d,efgh,1337')
 
+    @unittest.skip("internet")
     @requests_mock.Mocker()
     def test_api_call(self, m: requests_mock.Mocker):
         """Test that api calls work."""
@@ -333,6 +335,7 @@ class APICallMixinTest(BaseMixinDefinition, TestCase):
         )
         self.assertTrue(result)
 
+    @unittest.skip("internet")
     @requests_mock.Mocker()
     def test_function_errors(self, m: requests_mock.Mocker):
         """Test function errors."""

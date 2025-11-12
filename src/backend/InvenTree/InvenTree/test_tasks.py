@@ -2,6 +2,7 @@
 
 import os
 from datetime import timedelta
+import unittest
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -121,6 +122,7 @@ class InvenTreeTaskTests(PluginRegistryMixin, TestCase):
         errors = Error.objects.filter(when__lte=threshold)
         self.assertEqual(len(errors), 0)
 
+    @unittest.skip("internet")
     def test_task_check_for_updates(self):
         """Test the task check_for_updates."""
         # Check that setting should be empty

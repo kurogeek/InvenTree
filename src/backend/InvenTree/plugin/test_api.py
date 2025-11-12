@@ -1,5 +1,6 @@
 """Tests for general API tests for the plugin app."""
 
+import unittest
 from django.test import override_settings
 from django.urls import reverse
 
@@ -23,6 +24,7 @@ class PluginDetailAPITest(PluginMixin, InvenTreeAPITestCase):
         self.PKG_URL = 'git+https://github.com/inventree/inventree-brother-plugin'
         super().setUp()
 
+    @unittest.skip("internet")
     def test_plugin_uninstall(self):
         """Test plugin uninstall command."""
         # invalid package name
@@ -604,6 +606,7 @@ class PluginFullAPITest(PluginMixin, InvenTreeAPITestCase):
 
     superuser = True
 
+    @unittest.skip("internet")
     @override_settings(PLUGIN_TESTING_SETUP=True)
     def test_full_process(self):
         """Test the full plugin install/uninstall process via API."""

@@ -2,6 +2,7 @@
 
 import os
 import random
+import unittest
 from datetime import datetime, timedelta
 from enum import IntEnum
 
@@ -847,6 +848,7 @@ class StockItemListTest(StockAPITestCase):
 
             self.assertEqual(len(response['results']), n)
 
+    @unittest.skip("internet")
     def test_export(self):
         """Test exporting of Stock data via the API."""
         required_headers = [

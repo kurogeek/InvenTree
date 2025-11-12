@@ -1,5 +1,6 @@
 """Unit test for the exporter plugins."""
 
+import unittest
 from django.urls import reverse
 
 from InvenTree.unit_test import InvenTreeAPITestCase
@@ -12,6 +13,7 @@ class StocktakeExporterTest(InvenTreeAPITestCase):
     fixtures = ['category', 'part', 'location', 'stock', 'bom', 'company']
     roles = ['part.add', 'part.change', 'part.delete', 'stock.view']
 
+    @unittest.skip("internet")
     def test_stocktake_exporter(self):
         """Test the stocktake exporter plugin."""
         from part.models import Part

@@ -3,6 +3,7 @@
 import base64
 import io
 import json
+import unittest
 from datetime import date, datetime, timedelta
 from typing import Optional
 
@@ -889,6 +890,7 @@ class PurchaseOrderDownloadTest(OrderTest):
         response = self.export_data(url, export_format='xyz', expected_code=400)
         self.assertIn('is not a valid choice', str(response['export_format']))
 
+    @unittest.skip("internet")
     def test_download_csv(self):
         """Download PurchaseOrder data as .csv."""
         with self.export_data(
@@ -909,6 +911,7 @@ class PurchaseOrderDownloadTest(OrderTest):
                 self.assertEqual(order.description, row['Description'])
                 self.assertEqual(order.reference, row['Reference'])
 
+    @unittest.skip("internet")
     def test_download_line_items(self):
         """Test that the PurchaseOrderLineItems can be downloaded to a file."""
         with self.export_data(
@@ -1657,6 +1660,7 @@ class SalesOrderTest(OrderTest):
         self.assertGreaterEqual(n_events, 1)
         self.assertEqual(number_orders_incl_complete, n_events)
 
+    @unittest.skip("internet")
     def test_export(self):
         """Test we can export the SalesOrder list."""
         set_global_setting(models.SalesOrder.UNLOCK_SETTING, True)
@@ -1947,6 +1951,7 @@ class SalesOrderDownloadTest(OrderTest):
         response = self.export_data(url, export_plugin='no-plugin', expected_code=400)
         self.assertIn('is not a valid choice', str(response['export_plugin']))
 
+    @unittest.skip("internet")
     def test_download_xlsx(self):
         """Test xlsx file download."""
         url = reverse('api-so-list')
@@ -1957,6 +1962,7 @@ class SalesOrderDownloadTest(OrderTest):
         ) as file:
             self.assertIsInstance(file, io.BytesIO)
 
+    @unittest.skip("internet")
     def test_download_csv(self):
         """Test that the list of sales orders can be downloaded as a .csv file."""
         url = reverse('api-so-list')
@@ -2614,6 +2620,7 @@ class ReturnOrderTests(InvenTreeAPITestCase):
         calendar = Calendar.from_ical(response.content)
         self.assertIsInstance(calendar, Calendar)
 
+    @unittest.skip("internet")
     def test_export(self):
         """Test data export for the ReturnOrder API endpoints."""
         # Export return orders

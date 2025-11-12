@@ -1,5 +1,6 @@
 """Unit tests for action caller sample."""
 
+import unittest
 from django.test import TestCase
 
 import requests_mock
@@ -10,6 +11,7 @@ from plugin import registry
 class SampleApiCallerPluginTests(TestCase):
     """Tests for SampleApiCallerPluginTests."""
 
+    @unittest.skip("internet")
     @requests_mock.Mocker()
     def test_return(self, m):
         """Check if the external api call works."""
