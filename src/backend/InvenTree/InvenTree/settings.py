@@ -955,8 +955,14 @@ EMAIL_HOST = get_setting('INVENTREE_EMAIL_HOST', 'email.host', '')
 EMAIL_PORT = get_setting('INVENTREE_EMAIL_PORT', 'email.port', 25, typecast=int)
 EMAIL_HOST_USER = get_setting('INVENTREE_EMAIL_USERNAME', 'email.username', '')
 EMAIL_HOST_PASSWORD = get_setting('INVENTREE_EMAIL_PASSWORD', 'email.password', '')
+EMAIL_HOST_PASSWORD_FILE = get_setting('INVENTREE_EMAIL_PASSWORD_FILE', 'email.password_file', '')
 EMAIL_USE_TLS = get_boolean_setting('INVENTREE_EMAIL_TLS', 'email.tls', False)
 EMAIL_USE_SSL = get_boolean_setting('INVENTREE_EMAIL_SSL', 'email.ssl', False)
+if EMAIL_HOST_PASSWORD_FILE:
+    try:
+        EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD_FILE.read_text(encoding='utf-8')
+    except Exception:
+        msg = f"File not found to invalid permission at {EMAIL_HOST_PASSWORD_FILE}"
 # Anymail
 if INTERNAL_EMAIL_BACKEND.startswith('anymail.backends.'):
     ANYMAIL = get_setting('INVENTREE_ANYMAIL', 'email.anymail', None, dict)
