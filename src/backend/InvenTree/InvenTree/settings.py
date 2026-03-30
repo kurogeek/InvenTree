@@ -961,8 +961,8 @@ EMAIL_USE_SSL = get_boolean_setting('INVENTREE_EMAIL_SSL', 'email.ssl', False)
 if EMAIL_HOST_PASSWORD_FILE:
     try:
         EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD_FILE.read_text(encoding='utf-8')
-    except Exception:
-        msg = f"File not found to invalid permission at {EMAIL_HOST_PASSWORD_FILE}"
+    except:
+        msg = f"File not found or invalid permission at {EMAIL_HOST_PASSWORD_FILE}"
 # Anymail
 if INTERNAL_EMAIL_BACKEND.startswith('anymail.backends.'):
     ANYMAIL = get_setting('INVENTREE_ANYMAIL', 'email.anymail', None, dict)
